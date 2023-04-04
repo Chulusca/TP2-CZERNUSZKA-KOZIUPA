@@ -23,7 +23,8 @@ do
             VerEstadisticas();
             break;
         case 3:
-
+            int dniBuscado = Funciones.IngresarDni("Ingrese el DNI de la persona que quiere buscar ");
+            BuscarPosPersona(dniBuscado);
             break;
         case 4:
 
@@ -68,9 +69,7 @@ bool DniValido(int DNI){
     int i = 0;
     if(listaPersonas.Count > 0){
         while(!b){
-            if (DNI != listaPersonas[i].DevolverDni()){
-                b = true;
-            }
+            if (DNI != listaPersonas[i].DevolverDni()) b = true;
         }
     }
     else return true;
@@ -79,9 +78,7 @@ bool DniValido(int DNI){
 int CalcularCantHabilitadosVotar(){
     int cantHabilitados = 0;
     foreach(Persona p in listaPersonas){
-        if(p.PuedeVotar()){
-            cantHabilitados += 1;
-        }
+        if(p.PuedeVotar()) cantHabilitados += 1;
     }
     return cantHabilitados;
 }
@@ -91,4 +88,17 @@ int CalcularEdadPromedio(){
         totalEdades += p.DevolverEdad();
     }
     return totalEdades / listaPersonas.Count;    
+}
+
+int BuscarPosPersona(int dniBuscado){
+    bool dniEncontrado = false;
+    int contador = -1;
+    if(listaPersonas.Count > 0){
+        while(dniEncontrado == false && contador < listaPersonas.Count){
+            contador++;
+            if(dniBuscado == listaPersonas[contador].DevolverDni()) dniEncontrado = true;
+        }
+    }
+    else Console.WriteLine("Aún no se ingresaron personas en la lista");
+    return contador;
 }
