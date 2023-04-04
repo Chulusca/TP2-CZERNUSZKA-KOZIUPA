@@ -24,5 +24,7 @@ class Persona {
         edad = MiEdad();
         return (edad >= 16);
     }
-    
+    public int DevolverDni(){
+        return dni;
+    }
 }

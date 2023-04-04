@@ -38,9 +38,11 @@ void IngresarPersona()
     bool validacion = false;
     string nom = Funciones.IngresarTexto("Ingrese Nombre ");
     string ape = Funciones.IngresarTexto("Ingrese Apellido");
+    int dni = 0;
+    DateTime fn;
     do {
-        DateTime fn = Funciones.IngresarFecha("Ingrese Fecha de Nacimiento (aaaa/mm/dd) ");
-        int dni = Funciones.IngresarEntero("Ingrese DNI ");
+        fn = Funciones.IngresarFecha("Ingrese Fecha de Nacimiento (aaaa/mm/dd) ");
+        dni = Funciones.IngresarDni("Ingrese DNI ");
         validacion = DniValido(dni) && fn < DateTime.Today;
     }while(validacion);
     string email = Funciones.IngresarTexto("Ingrese email");
@@ -58,11 +60,15 @@ void VerEstadisticas(){
 }
 bool DniValido(int DNI){
     bool b = false;
-    foreach(Persona item in listaPersonas){
-        if (DNI != item.dni){
-            b = true;
+    int i = 0;
+    if(listaPersonas.Count > 0){
+        while(!b){
+            if (DNI != listaPersonas[i].DevolverDni()){
+                b = true;
+            }
         }
     }
+    else return true;
     return b;
 }
 
