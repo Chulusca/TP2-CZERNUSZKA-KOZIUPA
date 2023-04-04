@@ -30,4 +30,7 @@ class Persona {
     public int DevolverEdad(){
         return edad;
     }
+    public DateTime DevolverFN(){
+        return fechaNacimiento;
+    }
 }

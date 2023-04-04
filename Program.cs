@@ -24,10 +24,17 @@ do
             break;
         case 3:
             int dniBuscado = Funciones.IngresarDni("Ingrese el DNI de la persona que quiere buscar ");
-            BuscarPosPersona(dniBuscado);
+            int posBuscado = BuscarPosPersona(dniBuscado);
+            Console.WriteLine("Nombre: " + listaPersonas[posBuscado].nombre);
+            Console.WriteLine("Apellido: " + listaPersonas[posBuscado].apellido);
+            Console.WriteLine("Email: " + listaPersonas[posBuscado].email);
+            Console.WriteLine("Fecha de Nacimiento: " + listaPersonas[posBuscado].DevolverFN());
+            Console.WriteLine("Edad: " + listaPersonas[posBuscado].DevolverEdad());
+            if(listaPersonas[posBuscado].PuedeVotar()) Console.WriteLine("Puede votar");
+            else Console.WriteLine("No puede votar");
             break;
         case 4:
-
+            ModificarMail();
             break;
         case 5:
             break;
@@ -89,7 +96,6 @@ int CalcularEdadPromedio(){
     }
     return totalEdades / listaPersonas.Count;    
 }
-
 int BuscarPosPersona(int dniBuscado){
     bool dniEncontrado = false;
     int contador = -1;
@@ -101,4 +107,10 @@ int BuscarPosPersona(int dniBuscado){
     }
     else Console.WriteLine("Aún no se ingresaron personas en la lista");
     return contador;
+}
+void ModificarMail(){
+    int dniUsuario = Funciones.IngresarDni("Ingrese el dni del usuario al que le quiere cambiar el mail");
+    string emailModificado = Funciones.IngresarTexto("Ingrese su nuevo email");
+    int posUsuario = BuscarPosPersona(dniUsuario);
+    listaPersonas[posUsuario].email = emailModificado;
 }
