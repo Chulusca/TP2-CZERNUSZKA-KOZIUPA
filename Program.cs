@@ -56,7 +56,10 @@ void VerEstadisticas(){
     if(listaPersonas.Count > 0){
         Console.WriteLine("Estadísticas del censo:");
         Console.WriteLine("Cantidad de personas: " + listaPersonas.Count);
-        Console.WriteLine("Cantidad de personas habilitadas para votar: ");
+        int cantHabilitados = CalcularCantHabilitadosVotar();
+        Console.WriteLine($"Cantidad de personas habilitadas para votar: {cantHabilitados}");
+        int promedioEdad = CalcularEdadPromedio();
+        Console.WriteLine(promedioEdad);
     }
     else Console.WriteLine("Aún no se ingresaron personas en la lista");
 }
@@ -73,4 +76,19 @@ bool DniValido(int DNI){
     else return true;
     return b;
 }
-
+int CalcularCantHabilitadosVotar(){
+    int cantHabilitados = 0;
+    foreach(Persona p in listaPersonas){
+        if(p.PuedeVotar()){
+            cantHabilitados += 1;
+        }
+    }
+    return cantHabilitados;
+}
+int CalcularEdadPromedio(){
+    int totalEdades = 0;
+    foreach(Persona p in listaPersonas){
+        totalEdades += p.DevolverEdad();
+    }
+    return totalEdades / listaPersonas.Count;    
+}

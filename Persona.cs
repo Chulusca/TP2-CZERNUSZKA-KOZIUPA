@@ -27,4 +27,7 @@ class Persona {
     public int DevolverDni(){
         return dni;
     }
+    public int DevolverEdad(){
+        return edad;
+    }
 }
