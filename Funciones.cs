@@ -42,4 +42,10 @@ public static class Funciones
         }
         return fechaDate;
     }
+    public static int IngresarEntero(string msj){
+        int entero;
+        Console.WriteLine(msj);
+        entero = int.Parse(Console.ReadLine());
+        return entero;
+    }
 }

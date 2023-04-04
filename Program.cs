@@ -54,7 +54,9 @@ void IngresarPersona()
 
 void VerEstadisticas(){
     if(listaPersonas.Count > 0){
-
+        Console.WriteLine("Estadísticas del censo:");
+        Console.WriteLine("Cantidad de personas: " + listaPersonas.Count);
+        Console.WriteLine("Cantidad de personas habilitadas para votar: ");
     }
     else Console.WriteLine("Aún no se ingresaron personas en la lista");
 }
