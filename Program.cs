@@ -45,14 +45,14 @@ void IngresarPersona()
 {
     bool validacion = false;
     string nom = Funciones.IngresarTexto("Ingrese Nombre ");
-    string ape = Funciones.IngresarTexto("Ingrese Apellido");
+    string ape = Funciones.IngresarTexto("Ingrese Apellido ");
     int dni = 0;
     DateTime fn;
     do {
         fn = Funciones.IngresarFecha("Ingrese Fecha de Nacimiento (aaaa/mm/dd) ");
         dni = Funciones.IngresarDni("Ingrese DNI ");
         validacion = DniValido(dni) && fn < DateTime.Today;
-    }while(validacion);
+    }while (validacion == false);
     string email = Funciones.IngresarTexto("Ingrese email");
 
     Persona unaPersona = new Persona(dni, nom, ape, fn, email);
