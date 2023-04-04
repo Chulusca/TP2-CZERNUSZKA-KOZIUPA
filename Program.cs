@@ -7,7 +7,7 @@ int opcion;
 do
 {
     Console.Clear();
-    Console.WriteLine("1. Crgar nueva persona");
+    Console.WriteLine("1. Cargar nueva persona");
     Console.WriteLine("2. Ver estadisticas");
     Console.WriteLine("3. Buscar Persona");
     Console.WriteLine("4. Cambiar email");
@@ -59,7 +59,7 @@ void VerEstadisticas(){
         int cantHabilitados = CalcularCantHabilitadosVotar();
         Console.WriteLine($"Cantidad de personas habilitadas para votar: {cantHabilitados}");
         int promedioEdad = CalcularEdadPromedio();
-        Console.WriteLine(promedioEdad);
+        Console.WriteLine($"Promedio de Edad: {promedioEdad}");
     }
     else Console.WriteLine("Aún no se ingresaron personas en la lista");
 }
